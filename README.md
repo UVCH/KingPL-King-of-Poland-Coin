@@ -1,4 +1,4 @@
-# hello-world
+# KingPL - King of Poland Coin
 
 
-UVCH
+by UVCH
