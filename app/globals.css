@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; }
+body { @apply bg-king-black text-king-ivory antialiased; }
+
+/* Display font */
+@font-face {
+  font-family: 'Spectral';
+  src: url('/fonts/Spectral-Variable.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+.h-display { font-family: 'Spectral', ui-serif, Georgia, serif; }
+
+.prose { @apply prose-invert; }
