@@ -1,12 +1,12 @@
 import TemplateScripts from '@/components/TemplateScripts';
-import { loadTemplateHtmlFromFile } from '@/lib/template';
+import { loadTemplateFromFile } from '@/lib/template';
 
 export default function HomePL() {
-  const html = loadTemplateHtmlFromFile('index'); // template/file/index.html
+  const { html, scripts } = loadTemplateFromFile('index'); // template/file/index.html
   return (
     <div>
       <div dangerouslySetInnerHTML={{ __html: html }} />
-      <TemplateScripts />
+      <TemplateScripts scripts={scripts} />
     </div>
   );
 }
