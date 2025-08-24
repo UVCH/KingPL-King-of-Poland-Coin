@@ -1,8 +1,13 @@
+import TemplateScripts from '@/components/TemplateScripts';
+import { loadTemplateHtmlFromFile } from '@/lib/template';
+
 export default function HomeEN() {
+  // Na start używamy tej samej wersji index.html; później podmienimy na EN.
+  const html = loadTemplateHtmlFromFile('index');
   return (
-    <main style={{ padding: '2rem' }}>
-      <h1>KingPL (EN)</h1>
-      <p>Coming soon: integration from <code>template/</code>.</p>
-    </main>
+    <div>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <TemplateScripts />
+    </div>
   );
 }
