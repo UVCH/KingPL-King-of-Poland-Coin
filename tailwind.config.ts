@@ -4,15 +4,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        king: {
-          black: '#0B0B0C',
+        white: '#FFFFFF',
+        nearblack: '#0B0F14',
+        royal: {
           gold: '#D4AF37',
-          ivory: '#F8F7F4',
-          navy: '#0E1A3A',
+          goldBright: '#FFD700',
+          goldDeep: '#B8860B',
+          blue: '#0B1E6D',
+          crimson: '#B10F2E',
+          purple: '#5B2DAE',
         },
+        cloud: '#E5E7EB',
+        graphite: '#1F2937',
       },
-      borderRadius: { '2xl': '1rem' },
-      boxShadow: { soft: '0 10px 30px rgba(0,0,0,0.1)' },
+      borderRadius: { royal: '20px' },
+      boxShadow: { goldsoft: '0 8px 24px rgba(212,175,55,0.15)' },
     },
   },
   plugins: [require('@tailwindcss/typography')],

@@ -25,3 +25,11 @@ NEXT_PUBLIC_DEFAULT_LOCALE=pl
 NEXT_PUBLIC_SUPPORTED_LOCALES=pl,en
 NEXT_PUBLIC_ALLOWED_CHAIN_ID=8453
 ```
+
+## Run
+cp .env.example .env.local
+npm i
+npm run dev       # http://localhost:3000 → auto redirects to /pl or /en
+
+## Preview static export
+npm run preview   # serves ./out at http://localhost:3000
