@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "import:template": "node scripts/import-template.mjs",
+    "predev": "npm run import:template",
+    "prebuild": "npm run import:template",
     "dev": "next dev",
     "build": "next build",
     "export": "next export || true",
@@ -19,7 +22,8 @@
     "react-dom": "^18.2.0",
     "remark-gfm": "^3.0.1",
     "viem": "^2.7.0",
-    "wagmi": "^2.5.7"
+    "wagmi": "^2.5.7",
+    "fs-extra": "^11.2.0"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",

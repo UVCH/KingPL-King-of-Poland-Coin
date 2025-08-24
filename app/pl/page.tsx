@@ -1,8 +1,12 @@
+import TemplateScripts from '@/components/TemplateScripts';
+import { loadTemplateHtmlFromFile } from '@/lib/template';
+
 export default function HomePL() {
+  const html = loadTemplateHtmlFromFile('index'); // template/file/index.html
   return (
-    <main style={{ padding: '2rem' }}>
-      <h1>KingPL (PL)</h1>
-      <p>Wkrótce: integracja z <code>template/</code>.</p>
-    </main>
+    <div>
+      <div dangerouslySetInnerHTML={{ __html: html }} />
+      <TemplateScripts />
+    </div>
   );
 }
