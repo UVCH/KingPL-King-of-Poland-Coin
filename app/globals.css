@@ -26,3 +26,8 @@ body { @apply bg-white text-nearblack antialiased; }
 .u-uriel-dawn { background: linear-gradient(180deg, #FFFDF5 0%, #FFE9B0 40%, #FFFFFF 100%); }
 .u-royal-veil { background: linear-gradient(135deg, #0B1E6D 0%, #5B2DAE 60%, #B10F2E 100%); }
 .u-trinity-beam { background: linear-gradient(135deg, #0B1E6D 0%, #5B2DAE 50%, #B10F2E 100%); }
+
+/* Ensure readable light theme */
+:root { color-scheme: light; }
+body { background: #ffffff; color: #0B0F14; }
+
