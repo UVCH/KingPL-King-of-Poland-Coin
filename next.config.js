@@ -8,11 +8,9 @@ const nextConfig = {
   basePath,
   assetPrefix: basePath,
 
-  // Allow build to pass even if TypeScript/ESLint complain (preview purpose)
+  // Ignore TS/ESLint errors and stub any `ox` imports for preview builds
   typescript: { ignoreBuildErrors: true },
   eslint: { ignoreDuringBuilds: true },
-
-  // If any import tries to load `ox/*`, use a harmless stub so bundling doesn't fail
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
