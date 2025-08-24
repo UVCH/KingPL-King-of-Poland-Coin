@@ -10,7 +10,7 @@ const items = [
   { href: '/kings-word', pl: "King's Word", en: "King's Word" },
   { href: '/events', pl: 'Wydarzenia', en: 'Events' },
   { href: '/partnerzy', pl: 'Partnerzy', en: 'Partners' },
-  { href: '/kontakt', pl: 'Kontakt', en: 'Contact' },
+  { href: '/kontakt', pl: 'Kontakt', en: 'Contact' }
 ];
 
 function localeFromPath(path: string) { return path.startsWith('/en') ? 'en' : 'pl'; }
@@ -22,20 +22,19 @@ export default function Header() {
   const base = locale === 'en' ? '/en' : '/pl';
 
   return (
-    <header className="sticky top-0 z-50 border-b border-cloud/60 bg-white/85 backdrop-blur">
+    <header className="border-b border-gray-200 bg-white/85 backdrop-blur">
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-        <Link href={base} className="h-display text-xl text-nearblack">KingPL</Link>
+        <Link href={base} className="font-semibold text-lg">KingPL</Link>
         <nav className="hidden md:flex gap-6 text-sm">
           {items.map(n => (
-            <Link key={n.href} href={`${base}${n.href}`} className="hover:text-royal-blue">
+            <Link key={n.href} href={`${base}${n.href}`} className="hover:underline">
               {locale === 'en' ? n.en : n.pl}
             </Link>
           ))}
         </nav>
         <div className="flex items-center gap-3">
-          <Link href={swapLocale(pathname)} className="text-sm text-royal-blue">{locale === 'en' ? 'PL' : 'EN'}</Link>
-          <a href={process.env.NEXT_PUBLIC_DEX_URL || '#'} target="_blank"
-             className="rounded-royal border border-royal-gold px-3 py-1.5 text-nearblack hover:shadow-goldsoft">
+          <Link href={swapLocale(pathname)} className="text-sm underline">{locale === 'en' ? 'PL' : 'EN'}</Link>
+          <a href={process.env.NEXT_PUBLIC_DEX_URL || '#'} target="_blank" className="px-3 py-1.5 border rounded">
             Kup KingPL
           </a>
         </div>
@@ -43,3 +42,4 @@ export default function Header() {
     </header>
   );
 }
+

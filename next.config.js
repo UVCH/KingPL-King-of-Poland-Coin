@@ -5,6 +5,6 @@ const nextConfig = {
   images: { unoptimized: true },
   basePath,
   assetPrefix: basePath,
-  typescript: { ignoreBuildErrors: true },
 };
 module.exports = nextConfig;
+
