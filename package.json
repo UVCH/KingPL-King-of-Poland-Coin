@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next build"
+    "export": "next build",
+    "preview": "npm run build && npm run export && npx serve out -l 3000"
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.0.0",

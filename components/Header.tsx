@@ -1,37 +1,43 @@
 'use client';
 import Link from 'next/link';
-import CTAButton from './CTAButton';
-import LanguageSwitcher from './LanguageSwitcher';
-import WalletConnectButton from './WalletConnectButton';
-import { useDict } from './DictionaryProvider';
+import { usePathname } from 'next/navigation';
+
+const items = [
+  { href: '/o-projekcie', pl: 'O Projekcie', en: 'About' },
+  { href: '/o-projekcie/tokenomia', pl: 'Tokenomia', en: 'Tokenomics' },
+  { href: '/o-projekcie/roadmap', pl: 'Roadmap', en: 'Roadmap' },
+  { href: '/skarbiec', pl: 'Skarbiec', en: 'Treasury' },
+  { href: '/kings-word', pl: "King's Word", en: "King's Word" },
+  { href: '/events', pl: 'Wydarzenia', en: 'Events' },
+  { href: '/partnerzy', pl: 'Partnerzy', en: 'Partners' },
+  { href: '/kontakt', pl: 'Kontakt', en: 'Contact' },
+];
+
+function localeFromPath(path: string) { return path.startsWith('/en') ? 'en' : 'pl'; }
+function swapLocale(path: string) { return path.startsWith('/en') ? path.replace('/en', '/pl') : path.replace('/pl', '/en'); }
 
 export default function Header() {
-  const { dict } = useDict();
-  const nav = [
-    { href: '', label: dict.nav.start },
-    { href: 'o-projekcie', label: dict.nav.project },
-    { href: 'skarbiec', label: dict.nav.treasury },
-    { href: 'kings-word', label: dict.nav.blog },
-    { href: 'events', label: dict.nav.events },
-    { href: 'partnerzy', label: dict.nav.partners },
-    { href: 'kontakt', label: dict.nav.contact },
-  ];
-  const { locale } = useDict();
+  const pathname = usePathname() || '/pl';
+  const locale = localeFromPath(pathname);
+  const base = locale === 'en' ? '/en' : '/pl';
+
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-king-black/80 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-cloud/60 bg-white/85 backdrop-blur">
       <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-        <Link href={`/${locale}`} className="h-display text-xl">KingPL</Link>
+        <Link href={base} className="h-display text-xl text-nearblack">KingPL</Link>
         <nav className="hidden md:flex gap-6 text-sm">
-          {nav.map((n) => (
-            <Link key={n.href} href={`/${locale}/${n.href}`} className="hover:text-king-gold">
-              {n.label}
+          {items.map(n => (
+            <Link key={n.href} href={`${base}${n.href}`} className="hover:text-royal-blue">
+              {locale === 'en' ? n.en : n.pl}
             </Link>
           ))}
         </nav>
-        <div className="flex gap-2 items-center">
-          <LanguageSwitcher />
-          <WalletConnectButton />
-          <CTAButton />
+        <div className="flex items-center gap-3">
+          <Link href={swapLocale(pathname)} className="text-sm text-royal-blue">{locale === 'en' ? 'PL' : 'EN'}</Link>
+          <a href={process.env.NEXT_PUBLIC_DEX_URL || '#'} target="_blank"
+             className="rounded-royal border border-royal-gold px-3 py-1.5 text-nearblack hover:shadow-goldsoft">
+            Kup KingPL
+          </a>
         </div>
       </div>
     </header>

@@ -5,8 +5,9 @@ import { useRouter } from 'next/navigation';
 export default function RootRedirect() {
   const router = useRouter();
   useEffect(() => {
-    const lang = navigator.language?.toLowerCase().startsWith('pl') ? 'pl' : 'en';
-    router.replace(`/${lang}`);
+    const langs = (navigator.languages || [navigator.language]).map(l => l?.toLowerCase());
+    const isPL = langs.some(l => l?.startsWith('pl'));
+    router.replace(isPL ? '/pl' : '/en');
   }, [router]);
   return null;
 }
