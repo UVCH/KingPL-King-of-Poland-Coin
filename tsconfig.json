@@ -29,14 +29,20 @@
       }
     ]
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.mdx",
-    ".next/types/**/*.ts"
-  ],
+    "include": [
+      "app",
+      "components",
+      "lib",
+      "content",
+      "locales",
+      "types",
+      "next-env.d.ts"
+    ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "stubs",
+    "scripts",
+    "ox",
+    "**/*.test.*"
   ]
 }
