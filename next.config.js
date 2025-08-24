@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-const path = require('path');
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 const nextConfig = {
@@ -8,16 +7,15 @@ const nextConfig = {
   basePath,
   assetPrefix: basePath,
 
-  // Ignore TS/ESLint errors and stub any `ox` imports for preview builds
-  typescript: { ignoreBuildErrors: true },
-  eslint: { ignoreDuringBuilds: true },
-  webpack: (config) => {
-    config.resolve.alias = {
-      ...(config.resolve.alias || {}),
-      ox: path.resolve(__dirname, 'stubs/ox.js'),
-    };
-    return config;
+  // ⬇️ Unblock build even if TypeScript has errors (temporary to preview the site)
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  // ⬇️ Don’t fail the build on ESLint warnings/errors
+  eslint: {
+    ignoreDuringBuilds: true,
   },
 };
 
 module.exports = nextConfig;
+
