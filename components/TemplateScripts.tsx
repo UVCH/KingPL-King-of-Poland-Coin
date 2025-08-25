@@ -8,11 +8,11 @@ export default function TemplateScripts({ scripts }: { scripts: string[] }) {
   useEffect(() => {
     if (!scripts?.length) return;
 
-    let isCancelled = false;
+    let cancelled = false;
 
     (async () => {
       for (const src of scripts) {
-        if (isCancelled) break;
+        if (cancelled) break;
         await new Promise<void>((resolve) => {
           const s = document.createElement('script');
           s.src = src;
@@ -24,7 +24,7 @@ export default function TemplateScripts({ scripts }: { scripts: string[] }) {
     })();
 
     return () => {
-      isCancelled = true;
+      cancelled = true;
     };
   }, [scripts]);
 
