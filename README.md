@@ -1,1 +1,1 @@
-# KingPL – King of Poland Coin
+KingPL - King of Poland Coin by UVCH
